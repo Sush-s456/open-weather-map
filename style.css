@@ -6,9 +6,59 @@ body {
   padding: 50px;
 }
 
+.container {
+  margin-top: 20px;
+}
+
 #weather-container {
   background: rgba(255,255,255,0.2);
   padding: 20px;
   border-radius: 10px;
   display: inline-block;
+  margin-top: 20px;
+}
+
+/* Search Section */
+.search-section {
+  margin-bottom: 20px;
+}
+
+#cityInput {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+#cityInput:focus {
+  box-shadow: 0 0 5px white;
+}
+
+#searchBtn {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: white;
+  color: purple;
+  font-weight: bold;
+}
+
+#searchBtn:hover {
+  background-color: lightgray;
+}
+
+#searchBtn:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* Messages */
+.error {
+  color: yellow;
+  margin-top: 10px;
+}
+
+.loading {
+  margin-top: 10px;
 }

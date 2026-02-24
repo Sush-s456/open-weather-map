@@ -1,36 +1,59 @@
-//implementing api
-// Step 1: Add your API key
 const apiKey = "a5dcdeeb26893c7a0ebba08d31ad99cf";
 
-// Step 2: Choose a city
-const city = "London";
+const cityInput = document.getElementById("cityInput");
+const searchBtn = document.getElementById("searchBtn");
+const messageDiv = document.getElementById("message");
 
-// Step 3: Create API URL
-const url =
-`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+async function getWeather(city) {
 
-// Step 4: Fetch weather data
-axios.get(url)
-.then(function(response) {
+  if (!city.trim()) {
+    showError("Please enter a city name.");
+    return;
+  }
 
-  // Step 5: Get data from response
-  const data = response.data;
+  showLoading();
+  searchBtn.disabled = true;
 
-  // Step 6: Update HTML elements
-  document.getElementById("city").textContent = data.name;
+  try {
+    const url =
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-  document.getElementById("temperature").textContent =
-  "Temperature: " + data.main.temp + "°C";
+    const response = await axios.get(url);
+    const data = response.data;
 
-  document.getElementById("description").textContent =
-  data.weather[0].description;
+    document.getElementById("city").textContent = data.name;
+    document.getElementById("temperature").textContent =
+      "Temperature: " + data.main.temp + "°C";
+    document.getElementById("description").textContent =
+      data.weather[0].description;
+    document.getElementById("icon").src =
+      `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
-  const iconCode = data.weather[0].icon;
+    messageDiv.innerHTML = "";
 
-  document.getElementById("icon").src =
-  `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+  } catch (error) {
+    showError("City not found. Please try again.");
+  } finally {
+    searchBtn.disabled = false;
+  }
+}
 
-})
-.catch(function(error) {
-  console.log("Error:", error);
+function showError(message) {
+  messageDiv.innerHTML = `<p class="error">${message}</p>`;
+}
+
+function showLoading() {
+  messageDiv.innerHTML = `<p class="loading">Loading...</p>`;
+}
+
+searchBtn.addEventListener("click", function () {
+  getWeather(cityInput.value);
+  cityInput.value = "";
+});
+
+cityInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    getWeather(cityInput.value);
+    cityInput.value = "";
+  }
 });
