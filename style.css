@@ -1,64 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  text-align: center;
-  font-family: Arial;
-  background: linear-gradient(to right, purple, blue);
-  color: white;
-  padding: 50px;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.container {
-  margin-top: 20px;
+.app-container {
+    width: 95%;
+    max-width: 900px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-#weather-container {
-  background: rgba(255,255,255,0.2);
-  padding: 20px;
-  border-radius: 10px;
-  display: inline-block;
-  margin-top: 20px;
+header {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-/* Search Section */
 .search-section {
-  margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-#cityInput {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
+.search-section input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
 }
 
-#cityInput:focus {
-  box-shadow: 0 0 5px white;
+.search-section button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-#searchBtn {
-  padding: 10px 15px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  background-color: white;
-  color: purple;
-  font-weight: bold;
+.search-section button:hover {
+    background: #45a049;
 }
 
-#searchBtn:hover {
-  background-color: lightgray;
+/* Current Weather Card */
+.weather-card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    background: #f5f7fa;
+    margin-bottom: 25px;
 }
 
-#searchBtn:disabled {
-  background-color: gray;
-  cursor: not-allowed;
+.weather-card img {
+    width: 80px;
 }
 
-/* Messages */
-.error {
-  color: yellow;
-  margin-top: 10px;
+/* Forecast Section */
+.forecast-title {
+    margin-bottom: 10px;
 }
 
-.loading {
-  margin-top: 10px;
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+.forecast-card {
+    background: #f5f7fa;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.forecast-card:hover {
+    transform: translateY(-5px);
+}
+
+.forecast-card img {
+    width: 60px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .search-section {
+        flex-direction: column;
+    }
+
+    .search-section button {
+        width: 100%;
+    }
 }
