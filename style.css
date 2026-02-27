@@ -1,64 +1,160 @@
-body {
-  text-align: center;
-  font-family: Arial;
-  background: linear-gradient(to right, purple, blue);
-  color: white;
-  padding: 50px;
+
+/* ===== GLOBAL STYLES ===== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
+
+body {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== MAIN CONTAINER ===== */
 
 .container {
-  margin-top: 20px;
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
-#weather-container {
-  background: rgba(255,255,255,0.2);
-  padding: 20px;
-  border-radius: 10px;
-  display: inline-block;
-  margin-top: 20px;
+/* ===== TITLE ===== */
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
 }
 
-/* Search Section */
+/* ===== SEARCH SECTION ===== */
+
 .search-section {
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
-#cityInput {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
+#city-input {
+  padding: 12px;
+  width: 65%;
+  border-radius: 8px 0 0 8px;
+  border: 2px solid #4facfe;
   outline: none;
+  font-size: 16px;
 }
 
-#cityInput:focus {
-  box-shadow: 0 0 5px white;
-}
-
-#searchBtn {
-  padding: 10px 15px;
-  border-radius: 5px;
+#search-btn {
+  padding: 12px 20px;
   border: none;
-  cursor: pointer;
-  background-color: white;
-  color: purple;
+  background: #4facfe;
+  color: white;
   font-weight: bold;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-#searchBtn:hover {
-  background-color: lightgray;
+#search-btn:hover {
+  background: #00c6ff;
 }
 
-#searchBtn:disabled {
-  background-color: gray;
-  cursor: not-allowed;
+/* ===== RECENT SEARCHES ===== */
+
+.recent-section {
+  margin-bottom: 20px;
 }
 
-/* Messages */
-.error {
-  color: yellow;
+.recent-section h3 {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+#recent-searches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recent-btn {
+  background: #e3f2fd;
+  color: #0077cc;
+  border: none;
+  padding: 8px 14px;
+  margin: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.recent-btn:hover {
+  background: #4facfe;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ===== CLEAR BUTTON ===== */
+
+#clear-history {
   margin-top: 10px;
+  padding: 6px 12px;
+  background: #ff4d4d;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.loading {
-  margin-top: 10px;
+#clear-history:hover {
+  background: #cc0000;
+}
+
+/* ===== WEATHER DISPLAY ===== */
+
+#weather-display {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f9f9f9;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+#weather-display h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+#weather-display p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 500px) {
+  .search-section {
+    flex-direction: column;
+  }
+
+  #city-input {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  #search-btn {
+    width: 100%;
+    border-radius: 8px;
+  }
 }
