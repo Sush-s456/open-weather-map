@@ -1,4 +1,4 @@
-
+ 
 function WeatherApp() {
   this.apiKey = "a5dcdeeb26893c7a0ebba08d31ad99cf"
   this.cityInput = document.getElementById("city-input")
